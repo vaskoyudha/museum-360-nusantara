@@ -6,3 +6,7 @@ dist/
 .omx/logs/
 .omx/state/
 .omx/metrics.json
+
+.playwright-mcp/
+*.png
+!docs/design-references/*.png
