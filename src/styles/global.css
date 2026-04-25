@@ -277,3 +277,37 @@ p { color: var(--muted); line-height: 1.65; }
   .hero-section::before,
   .hero-section::after { opacity: .2; }
 }
+
+/* Museum Mpu Tantular asset integration */
+.hero-atmosphere {
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.58), rgba(0,0,0,.16) 42%, rgba(0,0,0,.52)),
+    linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.38)),
+    url('/images/mpu-tantular/01-1.jpg') center / cover no-repeat;
+}
+
+.museum-thumb,
+.gallery-card {
+  background-size: cover;
+  background-position: center;
+}
+
+.museum-thumb span {
+  opacity: .16;
+}
+
+.scene-list {
+  max-height: 390px;
+  overflow: auto;
+  padding-right: .35rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(199, 122, 29, .55) rgba(255, 255, 255, .24);
+}
+
+.scene-list button {
+  text-align: left;
+}
+
+.current-scene .scene-note {
+  display: block;
+}
