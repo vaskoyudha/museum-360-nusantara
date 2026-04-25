@@ -19,7 +19,7 @@ export const museums: Museum[] = [
     category: 'History & Culture',
     description: 'Indonesia’s largest museum of archaeology, ethnography, history, and cultural memory.',
     highlight: 'Main Hall',
-    panorama: '/panoramas/demo-museum-hall.svg',
+    panorama: '/panoramas/demo-museum-hall.jpg',
     accent: 'bronze',
   },
   {
@@ -30,7 +30,7 @@ export const museums: Museum[] = [
     category: 'Arts & Culture',
     description: 'Javanese heritage, performance, manuscripts, and craft traditions in the heart of Yogyakarta.',
     highlight: 'Javanese Heritage',
-    panorama: '/panoramas/demo-museum-hall.svg',
+    panorama: '/panoramas/demo-museum-hall.jpg',
     accent: 'sand',
   },
   {
@@ -41,7 +41,7 @@ export const museums: Museum[] = [
     category: 'Science & Nature',
     description: 'Geological collections, fossils, minerals, and stories of Indonesia’s natural formation.',
     highlight: 'Fossil Gallery',
-    panorama: '/panoramas/demo-museum-hall.svg',
+    panorama: '/panoramas/demo-museum-hall.jpg',
     accent: 'stone',
   },
   {
@@ -52,7 +52,7 @@ export const museums: Museum[] = [
     category: 'Heritage & Royalty',
     description: 'A poetic journey through Javanese royal history, visual culture, and intimate archives.',
     highlight: 'Royal Stories',
-    panorama: '/panoramas/demo-museum-hall.svg',
+    panorama: '/panoramas/demo-museum-hall.jpg',
     accent: 'forest',
   },
 ];

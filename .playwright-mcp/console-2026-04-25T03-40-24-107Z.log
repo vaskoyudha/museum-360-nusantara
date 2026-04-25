@@ -1,0 +1,11 @@
+[      44ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=802f02c8:14336
+[     209ms] [ERROR] Event @ http://127.0.0.1:5173/@vite/client:509
+[     212ms] Event
+[   53324ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=802f02c8:14336
+[   53450ms] [ERROR] Event @ http://127.0.0.1:5173/@vite/client:509
+[   53454ms] Event
+[  154053ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=802f02c8:14336
+[  154580ms] [WARNING] [.WebGL-0x351c000f5400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels @ http://127.0.0.1:5173/?v=3:0
+[  190461ms] [WARNING] [.WebGL-0x351c000f5400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels @ http://127.0.0.1:5173/?v=3:0
+[  265091ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=802f02c8:14336
+[  265774ms] [WARNING] [.WebGL-0x351c000f9000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels @ http://127.0.0.1:5173/?v=4:0

@@ -1,5 +1,4 @@
-import { Viewer } from '@photo-sphere-viewer/core';
-import '@photo-sphere-viewer/core/index.css';
+import type { Viewer as PhotoSphereViewer } from '@photo-sphere-viewer/core';
 import { Maximize2, MousePointer2, Volume2, ZoomIn, ZoomOut } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import type { Museum } from '../data/museums';
@@ -22,31 +21,44 @@ export function TourViewer({ museum }: TourViewerProps) {
     setViewerReady(false);
     setViewerError(null);
 
-    const viewer = new Viewer({
-      container: containerRef.current,
-      panorama: museum.panorama,
-      caption: museum.name,
-      description: museum.description,
-      defaultZoomLvl: 42,
-      minFov: 35,
-      maxFov: 95,
-      mousewheelCtrlKey: true,
-      touchmoveTwoFingers: true,
-      navbar: ['zoom', 'move', 'caption', 'fullscreen'],
-      loadingTxt: `Loading ${museum.name}`,
-    });
+    let viewer: PhotoSphereViewer | undefined;
+    let cancelled = false;
 
     const readyTimer = window.setTimeout(() => setViewerReady(true), 650);
     const failTimer = window.setTimeout(() => {
       if (!containerRef.current?.querySelector('canvas')) {
         setViewerError('The panorama could not be rendered. Add a JPG/WebP equirectangular image for production use.');
       }
-    }, 2800);
+    }, 3200);
+
+    void (async () => {
+      await import('@photo-sphere-viewer/core/index.css');
+      const { Viewer } = await import('@photo-sphere-viewer/core');
+
+      if (cancelled || !containerRef.current) {
+        return;
+      }
+
+      viewer = new Viewer({
+        container: containerRef.current,
+        panorama: museum.panorama,
+        caption: museum.name,
+        description: museum.description,
+        defaultZoomLvl: 42,
+        minFov: 35,
+        maxFov: 95,
+        mousewheelCtrlKey: true,
+        touchmoveTwoFingers: true,
+        navbar: ['zoom', 'move', 'caption', 'fullscreen'],
+        loadingTxt: `Loading ${museum.name}`,
+      });
+    })();
 
     return () => {
+      cancelled = true;
       window.clearTimeout(readyTimer);
       window.clearTimeout(failTimer);
-      viewer.destroy();
+      viewer?.destroy();
     };
   }, [museum]);
 
