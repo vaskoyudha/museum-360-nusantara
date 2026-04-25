@@ -18,37 +18,42 @@ import { useMemo, useState } from 'react';
 import { audienceBenefits, galleryItems, museumProfile, museums, type Museum } from './data/museums';
 import { TourViewer } from './components/TourViewer';
 
-const navItems = ['Museums', '360 Tour', 'Stories', 'Visit'];
+const navItems = [
+  { label: 'Museum', href: '#museums' },
+  { label: 'Tur 360', href: '#tour-tour' },
+  { label: 'Cerita', href: '#stories' },
+  { label: 'Kunjungi', href: '#visit' },
+];
 
 function App() {
   const [activeMuseum, setActiveMuseum] = useState<Museum>(museums[0]);
-  const primaryMuseums = useMemo(() => museums.slice(0, 4), []);
+  const primaryMuseum = useMemo(() => museums.slice(0, 4), []);
 
   return (
     <main className="site-shell">
       <Header />
       <Hero />
-      <FeaturedMuseums museums={primaryMuseums} activeId={activeMuseum.id} onSelect={setActiveMuseum} />
+      <FeaturedMuseum museums={primaryMuseum} activeId={activeMuseum.id} onSelect={setActiveMuseum} />
       <TourSection activeMuseum={activeMuseum} museums={museums} onSelect={setActiveMuseum} />
       <AudienceSection />
-      <GalleryVisitSection />
+      <GalleryKunjungiSection />
     </main>
   );
 }
 
 function Header() {
   return (
-    <header className="glass-nav" aria-label="Primary navigation">
-      <a className="brand-mark" href="#top" aria-label="Museum360 Nusantara home">
+    <header className="glass-nav" aria-label="Navigasi utama">
+      <a className="brand-mark" href="#top" aria-label="beranda Museum360 Nusantara">
         <span className="brand-symbol">✦</span>
         <span><strong>Museum360</strong> Nusantara</span>
       </a>
-      <nav className="nav-links" aria-label="Site sections">
+      <nav className="nav-links" aria-label="Bagian situs">
         {navItems.map((item) => (
-          <a key={item} href={`#${item.toLowerCase().replace('360 ', 'tour-').replace(' ', '-')}`}>{item}</a>
+          <a key={item.label} href={item.href}>{item.label}</a>
         ))}
       </nav>
-      <button className="icon-button" type="button" aria-label="Open menu">
+      <button className="icon-button" type="button" aria-label="Buka menu">
         <Menu size={22} />
       </button>
     </header>
@@ -60,31 +65,31 @@ function Hero() {
     <section id="top" className="hero-section section-pad">
       <div className="hero-atmosphere" aria-hidden="true" />
       <div className="hero-card glass-panel reveal-card">
-        <p className="eyebrow"><span /> 360° Immersive Museum Experience</p>
-        <h1>Tour Museum Mpu Tantular in 360°</h1>
-        <p className="hero-copy">Move through 23 real panorama points from Museum Mpu Tantular in Sidoarjo — from the entrance gate to route turns, galleries, and stair transitions.</p>
+        <p className="eyebrow"><span /> Pengalaman Museum 360°</p>
+        <h1>Jelajahi Museum Mpu Tantular dalam 360°</h1>
+        <p className="hero-copy">Susuri 23 titik panorama asli Museum Mpu Tantular di Sidoarjo — mulai dari gerbang masuk, percabangan rute, ruang pamer, hingga area tangga.</p>
         <div className="hero-actions">
-          <a className="button button-primary" href="#tour-tour"><Compass size={20} /> Start 360 Tour</a>
-          <a className="button button-ghost" href="#museums"><Landmark size={20} /> Explore Museums</a>
+          <a className="button button-primary" href="#tour-tour"><Compass size={20} /> Mulai Tur 360</a>
+          <a className="button button-ghost" href="#museums"><Landmark size={20} /> Jelajahi Museum</a>
         </div>
       </div>
-      <div className="hero-proof glass-strip" aria-label="Museum360 highlights">
-        <span><Compass size={22} /> 23 scenes<br /><small>Mpu Tantular route</small></span>
-        <span><Sparkles size={22} /> Real panoramas<br /><small>From your asset folder</small></span>
-        <span><MapPin size={22} /> Sidoarjo, East Java<br /><small>Museum Mpu Tantular</small></span>
+      <div className="hero-proof glass-strip" aria-label="Sorotan Museum360">
+        <span><Compass size={22} /> 23 titik<br /><small>Rute Mpu Tantular</small></span>
+        <span><Sparkles size={22} /> Panorama asli<br /><small>Dari folder asetmu</small></span>
+        <span><MapPin size={22} /> Sidoarjo, Jawa Timur<br /><small>Museum Mpu Tantular</small></span>
       </div>
     </section>
   );
 }
 
-function FeaturedMuseums({ museums: featured, activeId, onSelect }: { museums: Museum[]; activeId: string; onSelect: (museum: Museum) => void }) {
+function FeaturedMuseum({ museums: featured, activeId, onSelect }: { museums: Museum[]; activeId: string; onSelect: (museum: Museum) => void }) {
   return (
     <section id="museums" className="museum-section section-pad">
       <div className="section-heading editorial-heading">
-        <p className="eyebrow"><span /> Museum Mpu Tantular 360 Route</p>
-        <h2>Explore the Whole Museum Route</h2>
-        <p>Every card is built from the real 8000×4000 panorama images you provided for Museum Mpu Tantular.</p>
-        <a className="text-link" href="#tour-tour">Open route scenes <ArrowRight size={18} /></a>
+        <p className="eyebrow"><span /> Rute 360 Museum Mpu Tantular</p>
+        <h2>Jelajahi Seluruh Rute Museum</h2>
+        <p>Setiap kartu menggunakan gambar panorama asli 8000×4000 yang kamu sediakan untuk Museum Mpu Tantular.</p>
+        <a className="text-link" href="#tour-tour">Buka titik rute <ArrowRight size={18} /></a>
       </div>
       <div className="museum-grid">
         {featured.map((museum, index) => (
@@ -119,10 +124,10 @@ function TourSection({ activeMuseum, museums: scenes, onSelect }: { activeMuseum
   return (
     <section id="tour-tour" className="tour-section section-pad">
       <div className="tour-copy">
-        <p className="eyebrow"><span /> Museum Mpu Tantular 360 Tour</p>
-        <h2>Enter Museum Mpu Tantular</h2>
-        <p>Choose any captured route point, then drag the 360° viewer to look around the actual museum panorama.</p>
-        <div className="scene-list" aria-label="Choose museum scene">
+        <p className="eyebrow"><span /> Museum Mpu Tantular Tur 360</p>
+        <h2>Masuk ke Museum Mpu Tantular</h2>
+        <p>Pilih salah satu titik rute, lalu geser viewer 360° untuk melihat panorama museum yang sebenarnya.</p>
+        <div className="scene-list" aria-label="Pilih titik museum">
           {scenes.map((scene) => (
             <button className={scene.id === activeMuseum.id ? 'active' : ''} type="button" key={scene.id} onClick={() => onSelect(scene)}>
               <Landmark size={18} /> {scene.highlight}
@@ -133,11 +138,11 @@ function TourSection({ activeMuseum, museums: scenes, onSelect }: { activeMuseum
       <TourViewer museum={activeMuseum} />
       <aside className="current-scene glass-panel">
         <span className="round-icon"><Landmark size={22} /></span>
-        <p className="eyebrow small">Current Scene</p>
+        <p className="eyebrow small">Titik Saat Ini</p>
         <h3>{activeMuseum.highlight}</h3>
         <p><MapPin size={17} /> {activeMuseum.name} · {activeMuseum.city}, {activeMuseum.province}</p>
         <hr />
-        <p className="scene-note">Loaded from the supplied Museum Mpu Tantular panorama folder.</p>
+        <p className="scene-note">Dimuat dari folder panorama Museum Mpu Tantular yang kamu berikan.</p>
       </aside>
     </section>
   );
@@ -148,11 +153,11 @@ function AudienceSection() {
 
   return (
     <section id="stories" className="audience-section section-pad">
-      <div className="rhythm-line" aria-hidden="true"><span>Explore</span><span>Discover</span><span>Connect</span></div>
+      <div className="rhythm-line" aria-hidden="true"><span>Jelajahi</span><span>Temukan</span><span>Terhubung</span></div>
       <div className="section-heading audience-heading">
-        <p className="eyebrow"><span /> Museum Mpu Tantular | Digital Visit</p>
-        <h2>Built Around Your Museum Photos</h2>
-        <p>The website now uses the real Mpu Tantular 360 scenes as the center of the experience, with a glass interface wrapped around them.</p>
+        <p className="eyebrow"><span /> Museum Mpu Tantular | Kunjungan Digital</p>
+        <h2>Dibangun dari Foto Museum yang Kamu Berikan</h2>
+        <p>Website ini sekarang menjadikan scene 360 asli Mpu Tantular sebagai pusat pengalaman, dibungkus dengan antarmuka kaca yang modern.</p>
       </div>
       <div className="benefit-grid">
         {audienceBenefits.map((benefit, index) => {
@@ -169,24 +174,24 @@ function AudienceSection() {
         })}
       </div>
       <div className="metrics-strip glass-panel">
-        <strong>{museumProfile.sceneCount}<span>Scenes</span></strong>
-        <strong>360°<span>Panoramas</span></strong>
-        <strong><MonitorSmartphone size={54} /><span>All Devices</span></strong>
+        <strong>{museumProfile.sceneCount}<span>Titik</span></strong>
+        <strong>360°<span>Panorama</span></strong>
+        <strong><MonitorSmartphone size={54} /><span>Semua Perangkat</span></strong>
       </div>
     </section>
   );
 }
 
-function GalleryVisitSection() {
+function GalleryKunjungiSection() {
   const icons = [Sparkles, Building2, BookOpen, MapPin];
 
   return (
     <section id="visit" className="gallery-visit section-pad">
       <div className="gallery-panel">
         <div className="section-heading compact">
-          <p className="eyebrow"><span /> Heritage Gallery</p>
-          <h2>Explore Museum Mpu Tantular’s Route</h2>
-          <p>A gallery-led overview using selected frames from the supplied Museum Mpu Tantular panorama set.</p>
+          <p className="eyebrow"><span /> Galeri Warisan</p>
+          <h2>Jelajahi Rute Museum Mpu Tantular</h2>
+          <p>Ringkasan visual berbasis galeri dari frame pilihan dalam kumpulan panorama Museum Mpu Tantular.</p>
         </div>
         <div className="gallery-grid">
           {galleryItems.map((item, index) => {
@@ -212,23 +217,23 @@ function GalleryVisitSection() {
       </div>
       <aside className="visit-card glass-panel">
         <span className="round-icon"><CalendarDays size={24} /></span>
-        <h2>Plan a Real Visit After the Mpu Tantular Tour</h2>
-        <p>The route preview is built from supplied photos; verify opening hours and ticket details with official museum sources before production.</p>
+        <h2>Rencanakan Kunjungan Setelah Tur Mpu Tantular</h2>
+        <p>Pratinjau rute dibuat dari foto yang kamu berikan; pastikan jam buka dan tiket melalui sumber resmi museum sebelum produksi.</p>
         <div className="visit-grid">
-          <InfoTile icon={Clock3} title="Opening Hours" text="Verify current hours with official Museum Mpu Tantular channels." />
-          <InfoTile icon={MapPin} title="Location" text="Sidoarjo, East Java — add official map link before production." />
-          <InfoTile icon={Ticket} title="Duration" text="23 captured panorama points for the virtual route." />
-          <InfoTile icon={BookOpen} title="Collection Focus" text="Route scenes, galleries, access points, and stair transitions." />
+          <InfoTile icon={Clock3} title="Jam Buka" text="Cek jam operasional terbaru melalui kanal resmi Museum Mpu Tantular." />
+          <InfoTile icon={MapPin} title="Lokasi" text="Sidoarjo, Jawa Timur — tambahkan tautan peta resmi sebelum produksi." />
+          <InfoTile icon={Ticket} title="Durasi" text="23 titik panorama untuk rute virtual." />
+          <InfoTile icon={BookOpen} title="Fokus Koleksi" text="Scene rute, ruang pamer, akses, dan transisi tangga." />
         </div>
       </aside>
       <div className="final-cta glass-panel">
-        <p>Begin with the 360° route, continue with a real Museum Mpu Tantular visit.</p>
-        <a className="button button-primary" href="#tour-tour"><Compass size={19} /> Start the Tour</a>
-        <a className="button button-ghost" href="#museums"><BookOpen size={19} /> View Museum Guide</a>
+        <p>Mulai dari rute 360°, lalu lanjutkan dengan kunjungan langsung ke Museum Mpu Tantular.</p>
+        <a className="button button-primary" href="#tour-tour"><Compass size={19} /> Mulai Tur</a>
+        <a className="button button-ghost" href="#museums"><BookOpen size={19} /> Lihat Panduan Museum</a>
       </div>
       <footer className="footer-line">
         <strong>Museum360 Nusantara</strong>
-        <span>Museum Mpu Tantular 360 route powered by your panorama assets.</span>
+        <span>Rute 360 Museum Mpu Tantular didukung oleh aset panorama milikmu.</span>
       </footer>
     </section>
   );

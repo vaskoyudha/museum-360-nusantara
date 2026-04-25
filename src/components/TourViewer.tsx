@@ -27,7 +27,7 @@ export function TourViewer({ museum }: TourViewerProps) {
     const readyTimer = window.setTimeout(() => setViewerReady(true), 650);
     const failTimer = window.setTimeout(() => {
       if (!containerRef.current?.querySelector('canvas')) {
-        setViewerError('The panorama could not be rendered. Add a JPG/WebP equirectangular image for production use.');
+        setViewerError('Panorama tidak dapat ditampilkan. Tambahkan gambar equirectangular JPG/WebP untuk penggunaan produksi.');
       }
     }, 3200);
 
@@ -50,7 +50,7 @@ export function TourViewer({ museum }: TourViewerProps) {
         mousewheelCtrlKey: true,
         touchmoveTwoFingers: true,
         navbar: ['zoom', 'move', 'caption', 'fullscreen'],
-        loadingTxt: `Loading ${museum.name}`,
+        loadingTxt: `Memuat ${museum.name}`,
       });
     })();
 
@@ -64,22 +64,22 @@ export function TourViewer({ museum }: TourViewerProps) {
 
   return (
     <div className="viewer-frame glass-panel">
-      <div className="viewer-toolbar" aria-label="Tour viewer tools">
-        <span><MousePointer2 size={16} /> Click and drag to look around</span>
-        <span>{viewerReady ? 'Live 360° scene' : 'Preparing scene'}</span>
+      <div className="viewer-toolbar" aria-label="Alat viewer tur">
+        <span><MousePointer2 size={16} /> Klik dan geser untuk melihat sekitar</span>
+        <span>{viewerReady ? 'Scene 360° aktif' : 'Menyiapkan scene'}</span>
       </div>
-      <div ref={containerRef} className="panorama-container" aria-label={`360 panorama viewer for ${museum.name}`} />
+      <div ref={containerRef} className="panorama-container" aria-label={`Viewer panorama 360 untuk ${museum.name}`} />
       {viewerError ? (
         <div className="viewer-empty" role="status">
-          <strong>Panorama fallback</strong>
+          <strong>Fallback panorama</strong>
           <p>{viewerError}</p>
         </div>
       ) : null}
       <div className="viewer-controls" aria-hidden="true">
-        <span><ZoomIn size={18} /> Zoom In</span>
-        <span><ZoomOut size={18} /> Zoom Out</span>
-        <span><Maximize2 size={18} /> Fullscreen</span>
-        <span><Volume2 size={18} /> Audio / Guide</span>
+        <span><ZoomIn size={18} /> Perbesar</span>
+        <span><ZoomOut size={18} /> Perkecil</span>
+        <span><Maximize2 size={18} /> Layar Penuh</span>
+        <span><Volume2 size={18} /> Audio / Panduan</span>
       </div>
     </div>
   );
