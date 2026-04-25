@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4096 2048" role="img" aria-label="Generated panoramic museum hall placeholder">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8efe1"/>
+      <stop offset="0.48" stop-color="#c9b79f"/>
+      <stop offset="1" stop-color="#1e1712"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="18%" r="60%">
+      <stop offset="0" stop-color="#fff8e8" stop-opacity="0.92"/>
+      <stop offset="0.55" stop-color="#d69a45" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#120f0b" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="floor" width="256" height="256" patternUnits="userSpaceOnUse">
+      <rect width="256" height="256" fill="#4b3b2d"/>
+      <path d="M0 0H256V256H0Z" fill="none" stroke="#ceb58f" stroke-opacity=".28" stroke-width="8"/>
+      <path d="M0 128H256M128 0V256" stroke="#19130f" stroke-opacity=".28" stroke-width="5"/>
+    </pattern>
+    <filter id="soft"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <rect width="4096" height="2048" fill="url(#sky)"/>
+  <rect width="4096" height="2048" fill="url(#glow)"/>
+  <path d="M0 1210 C760 990 1250 980 2048 1210 C2820 980 3440 990 4096 1210 L4096 2048 L0 2048 Z" fill="url(#floor)" opacity=".9"/>
+  <g opacity=".72">
+    <path d="M0 420 H4096" stroke="#fff1d0" stroke-width="20" opacity=".28"/>
+    <path d="M0 620 H4096" stroke="#332419" stroke-width="16" opacity=".3"/>
+    <path d="M0 910 H4096" stroke="#fff5df" stroke-width="10" opacity=".18"/>
+  </g>
+  <g fill="#2f241a" opacity=".88">
+    <rect x="160" y="380" width="130" height="850" rx="18"/>
+    <rect x="600" y="330" width="150" height="930" rx="18"/>
+    <rect x="1100" y="370" width="135" height="860" rx="18"/>
+    <rect x="1850" y="285" width="170" height="980" rx="22"/>
+    <rect x="2076" y="285" width="170" height="980" rx="22"/>
+    <rect x="2860" y="370" width="135" height="860" rx="18"/>
+    <rect x="3348" y="330" width="150" height="930" rx="18"/>
+    <rect x="3810" y="380" width="130" height="850" rx="18"/>
+  </g>
+  <g fill="#8b6a42" opacity=".85">
+    <rect x="390" y="820" width="260" height="330" rx="22"/>
+    <rect x="1410" y="780" width="300" height="390" rx="24"/>
+    <rect x="2360" y="780" width="300" height="390" rx="24"/>
+    <rect x="3460" y="820" width="260" height="330" rx="22"/>
+  </g>
+  <g fill="#e8c178" opacity=".9">
+    <circle cx="520" cy="760" r="36"/>
+    <circle cx="1560" cy="720" r="36"/>
+    <circle cx="2510" cy="720" r="36"/>
+    <circle cx="3590" cy="760" r="36"/>
+  </g>
+  <g fill="none" stroke="#f4ddb4" stroke-opacity=".18" stroke-width="4">
+    <path d="M0 1450 C800 1200 1300 1200 2048 1450 C2800 1200 3300 1200 4096 1450"/>
+    <path d="M0 1680 C760 1390 1300 1390 2048 1680 C2800 1390 3340 1390 4096 1680"/>
+  </g>
+  <g transform="translate(1990 650)" opacity=".95">
+    <path d="M60 0 C118 100 130 240 72 340 C32 408 -42 408 -82 340 C-140 240 -126 100 -70 0 C-38 -56 28 -56 60 0Z" fill="#5f482e"/>
+    <circle cx="-5" cy="-20" r="58" fill="#8f6a3f"/>
+    <path d="M-86 350 H88 L128 520 H-126Z" fill="#332418"/>
+  </g>
+  <text x="2048" y="1830" text-anchor="middle" fill="#f8e7c8" opacity=".5" font-family="Arial, sans-serif" font-size="74" letter-spacing="18">MUSEUM360 NUSANTARA DEMO PANORAMA</text>
+  <rect width="4096" height="2048" fill="#000" opacity=".08"/>
+</svg>
